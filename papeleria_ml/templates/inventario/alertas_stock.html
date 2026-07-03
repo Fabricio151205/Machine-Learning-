@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Alertas de Stock</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+</head>
+<body>
+
+<div class="container mt-5">
+
+    <h2>Alertas de Stock Bajo</h2>
+
+    <div class="mb-3">
+        <a href="/" class="btn btn-secondary">
+            Volver
+        </a>
+    </div>
+
+    <table class="table table-bordered table-striped">
+
+        <thead class="table-danger">
+            <tr>
+                <th>ID</th>
+                <th>Producto</th>
+                <th>Precio</th>
+                <th>Stock Actual</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            {% for producto in productos %}
+
+            <tr>
+                <td>{{ producto[0] }}</td>
+                <td>{{ producto[1] }}</td>
+                <td>S/. {{ producto[3] }}</td>
+                <td>{{ producto[4] }}</td>
+            </tr>
+
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,244 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<div class="container mt-4">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <h2>Predicciones Inteligentes IA</h2>
+
+    <a href="/" class="btn btn-secondary mb-3">
+        Volver
+    </a>
+
+    <form method="GET" class="mb-4">
+
+        <input
+            type="text"
+            name="buscar"
+            class="form-control"
+            placeholder="Buscar producto..."
+            value="{{ buscar }}">
+
+    </form>
+
+    {% if resultado_busqueda %}
+
+    <div class="card border-primary mb-4">
+
+        <div class="card-body">
+
+            <h4>
+                🔍 Resultado de búsqueda
+            </h4>
+
+            <h5>
+                {{ resultado_busqueda.nombre }}
+            </h5>
+
+            <p>
+                Stock actual:
+                {{ resultado_busqueda.stock }}
+            </p>
+
+            <p>
+                Demanda estimada:
+                {{ resultado_busqueda.prediccion }}
+            </p>
+
+            <p>
+                Reposición sugerida:
+                {{ resultado_busqueda.reponer }}
+            </p>
+
+        </div>
+
+    </div>
+
+    {% endif %}
+
+    {% if predicciones_6_meses %}
+
+    <div class="card mt-4">
+
+        <div class="card-body">
+
+            <h4>
+                📈 Predicción próximos 6 meses
+            </h4>
+
+            <div class="row">
+
+                <div class="col-md-6">
+
+                    <table class="table table-striped">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Año</th>
+                                <th>Mes</th>
+                                <th>Demanda Estimada</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            {% for pred in predicciones_6_meses %}
+
+                            <tr>
+
+                                <td>{{ pred.anio }}</td>
+
+                                <td>{{ pred.mes }}</td>
+
+                                <td>{{ pred.prediccion }}</td>
+
+                            </tr>
+
+                            {% endfor %}
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <canvas id="graficoPrediccion"></canvas>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+
+    const ctx = document.getElementById('graficoPrediccion');
+
+    new Chart(ctx, {
+
+        type: 'line',
+
+        data: {
+
+            labels: {{ labels_grafico | tojson }},
+
+            datasets: [{
+
+                label: 'Demanda estimada',
+
+                data: {{ datos_grafico | tojson }},
+
+                borderWidth: 2
+
+            }]
+
+        },
+
+        options: {
+
+            responsive: true,
+
+            scales: {
+
+                y: {
+
+                    beginAtZero: true
+
+                }
+
+            }
+
+        }
+
+    });
+
+    </script>
+
+    {% endif %}
+
+    <h3>⚠ Alertas IA</h3>
+
+    <div class="row">
+
+        {% for alerta in alertas %}
+
+        <div class="col-md-4 mb-3">
+
+            <div class="card border-danger">
+
+                <div class="card-body">
+
+                    <h5>
+                        {{ alerta.nombre }}
+                    </h5>
+
+                    <p>
+                        Stock: {{ alerta.stock }}
+                    </p>
+
+                    <p>
+                        Demanda: {{ alerta.prediccion }}
+                    </p>
+
+                    <p>
+                        Reponer: {{ alerta.reponer }}
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    <hr>
+
+    <h3>📦 Predicciones Completas</h3>
+    <a href="/exportar_excel_ia" class="btn btn-success mb-3">
+
+        Exportar Excel
+
+    </a>
+    <div class="row">
+
+        {% for producto in predicciones %}
+
+        <div class="col-md-3 mb-3">
+
+            <div class="card">
+
+                <div class="card-body">
+
+                    <h6>
+                        {{ producto.nombre }}
+                    </h6>
+
+                    <p>
+                        Demanda estimada:
+                        <strong>
+                            {{ producto.prediccion }}
+                        </strong>
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>

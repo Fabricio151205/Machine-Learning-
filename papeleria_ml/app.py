@@ -1,7 +1,11 @@
-from flask import Flask, render_template, request, redirect, flash
+from flask import Flask, render_template, request, redirect, flash, session
 import pyodbc
 import joblib
 import numpy as np
+import pandas as pd
+from io import BytesIO
+from flask import send_file
+from datetime import datetime
 
 app = Flask(__name__)
 app.secret_key = 'papeleria_ml_2026'
@@ -13,11 +17,80 @@ conexion = pyodbc.connect(
     'Trusted_Connection=yes;'
 )
 
+modelo_ia = joblib.load('modelos/modelo_demanda.pkl')
+
+encoder_productos = joblib.load(
+    'modelos/encoder_productos.pkl'
+)
 
 cursor = conexion.cursor()
 
 modelo = joblib.load('modelos/modelo_ventas.pkl')
+def generar_alertas_ia():
 
+    alertas = []
+
+    cursor.execute("""
+        SELECT
+            id,
+            nombre,
+            stock
+        FROM productos
+    """)
+
+    productos = cursor.fetchall()
+
+    from datetime import datetime
+
+    hoy = datetime.now()
+
+    año = hoy.year
+    mes = hoy.month + 1
+
+    if mes > 12:
+        mes = 1
+        año += 1
+
+    for producto in productos:
+
+        producto_id = producto[0]
+        nombre = producto[1]
+        stock = producto[2]
+
+        try:
+
+            prediccion = modelo_ia.predict(
+                [[producto_id, año, mes]]
+            )[0]
+
+            prediccion = round(prediccion)
+
+            if prediccion > stock:
+
+                alertas.append({
+
+                    'nombre': nombre,
+
+                    'stock': stock,
+
+                    'prediccion': prediccion,
+
+                    'reponer': prediccion - stock
+
+                })
+
+        except:
+
+            pass
+    
+    alertas.sort(
+        key=lambda x: x['reponer'],
+        reverse=True
+    )
+
+    alertas = alertas[:5]
+
+    return alertas
 @app.route('/')
 def inicio():
 
@@ -68,35 +141,46 @@ def inicio():
         """)
 
     productos = cursor.fetchall()
+    # Total productos
+    cursor.execute("""
+        SELECT COUNT(*)
+        FROM productos
+    """)
+    total_productos = cursor.fetchone()[0]
+
+    # Total categorías
+    cursor.execute("""
+        SELECT COUNT(*)
+        FROM categorias
+    """)
+    total_categorias = cursor.fetchone()[0]
+
+    # Total proveedores
+    cursor.execute("""
+        SELECT COUNT(*)
+        FROM proveedores
+    """)
+    total_proveedores = cursor.fetchone()[0]
+
+    # Productos con stock bajo
+    cursor.execute("""
+        SELECT COUNT(*)
+        FROM productos
+        WHERE stock <= 5
+    """)
+    stock_bajo = cursor.fetchone()[0]
+    alertas_ia = generar_alertas_ia()
 
     return render_template(
-        'index.html',
+        'productos/index.html',
         productos=productos,
         categorias=categorias,
-        categoria_seleccionada=int(categoria_id) if categoria_id else None
-    )
-
-    cursor.execute("""
-        SELECT
-            p.id,
-            p.nombre,
-            c.nombre AS categoria,
-            pr.nombre AS proveedor,
-            p.precio,
-            p.stock
-        FROM productos p
-        LEFT JOIN categorias c
-            ON p.categoria_id = c.id
-        LEFT JOIN proveedores pr
-            ON p.proveedor_id = pr.id
-        ORDER BY p.id
-    """)
-
-    productos = cursor.fetchall()
-
-    return render_template(
-        'index.html',
-        productos=productos
+        categoria_seleccionada=int(categoria_id) if categoria_id else None,
+        total_productos=total_productos,
+        total_categorias=total_categorias,
+        total_proveedores=total_proveedores,
+        stock_bajo=stock_bajo,
+        alertas_ia=alertas_ia
     )
 
 @app.route('/categorias')
@@ -109,7 +193,7 @@ def categorias():
     categorias = cursor.fetchall()
 
     return render_template(
-        'categorias.html',
+        'categorias/categorias.html',
         categorias=categorias
     )
 
@@ -131,7 +215,7 @@ def agregar_categoria():
 
         return redirect('/categorias')
 
-    return render_template('agregar_categoria.html')
+    return render_template('categorias/agregar_categoria.html')
 
 @app.route('/eliminar_categoria/<int:id>')
 def eliminar_categoria(id):
@@ -171,7 +255,7 @@ def editar_categoria(id):
     categoria = cursor.fetchone()
 
     return render_template(
-        'editar_categoria.html',
+        'categorias/editar_categoria.html',
         categoria=categoria
     )
 
@@ -185,7 +269,7 @@ def proveedores():
     proveedores = cursor.fetchall()
 
     return render_template(
-        'proveedores.html',
+        'proveedores/proveedores.html',
         proveedores=proveedores
     )
 
@@ -209,7 +293,7 @@ def agregar_proveedor():
 
         return redirect('/proveedores')
 
-    return render_template('agregar_proveedor.html')
+    return render_template('proveedores/agregar_proveedor.html')
 
 @app.route('/eliminar_proveedor/<int:id>')
 def eliminar_proveedor(id):
@@ -254,12 +338,16 @@ def editar_proveedor(id):
     proveedor = cursor.fetchone()
 
     return render_template(
-        'editar_proveedor.html',
+        'proveedores/editar_proveedor.html',
         proveedor=proveedor
     )
 
+
 @app.route('/ventas', methods=['GET', 'POST'])
 def ventas():
+
+    if 'carrito' not in session:
+        session['carrito'] = []
 
     if request.method == 'POST':
 
@@ -356,13 +444,205 @@ def ventas():
     cursor.execute("""
         SELECT * FROM productos
     """)
-
     productos = cursor.fetchall()
 
-    return render_template(
-        'ventas.html',
-        productos=productos
+    print(session['carrito'])
+
+    total_carrito = sum(
+        item['subtotal']
+        for item in session['carrito']
     )
+
+    return render_template(
+        'ventas/ventas.html',
+        productos=productos,
+        carrito=session['carrito'],
+        total_carrito=total_carrito
+    )
+
+@app.route('/agregar_carrito', methods=['POST'])
+def agregar_carrito():
+
+    producto_id = int(request.form['producto_id'])
+    cantidad = int(request.form['cantidad'])
+
+    cursor.execute("""
+        SELECT nombre, precio, stock
+        FROM productos
+        WHERE id = ?
+    """, (producto_id,))
+
+    producto = cursor.fetchone()
+
+    nombre = producto[0]
+    precio = float(producto[1])
+    stock = int(producto[2])
+
+    if cantidad > stock:
+
+        flash(
+            f'Stock insuficiente. Disponible: {stock}'
+        )
+
+        return redirect('/ventas')
+
+    carrito = session.get('carrito', [])
+
+    producto_encontrado = False
+
+    for item in carrito:
+
+        if item['producto_id'] == producto_id:
+
+            item['cantidad'] += cantidad
+            item['subtotal'] = (
+                item['cantidad'] * item['precio']
+            )
+
+            producto_encontrado = True
+            break
+
+    if not producto_encontrado:
+
+        carrito.append({
+            'producto_id': producto_id,
+            'nombre': nombre,
+            'cantidad': cantidad,
+            'precio': precio,
+            'subtotal': precio * cantidad
+        })
+
+    session['carrito'] = carrito
+
+    flash('Producto agregado al carrito')
+
+    return redirect('/ventas')
+
+@app.route('/eliminar_carrito/<int:indice>')
+def eliminar_carrito(indice):
+
+    carrito = session.get('carrito', [])
+
+    if 0 <= indice < len(carrito):
+        carrito.pop(indice)
+
+    session['carrito'] = carrito
+
+    flash('Producto eliminado del carrito')
+
+    return redirect('/ventas')
+
+@app.route('/vaciar_carrito')
+def vaciar_carrito():
+
+    session['carrito'] = []
+
+    flash('Carrito vaciado correctamente')
+
+    return redirect('/ventas')
+@app.route('/confirmar_venta', methods=['POST'])
+def confirmar_venta():
+
+    carrito = session.get('carrito', [])
+
+    if not carrito:
+
+        flash('El carrito está vacío')
+
+        return redirect('/ventas')
+    
+    for item in carrito:
+
+        cursor.execute("""
+            SELECT stock
+            FROM productos
+            WHERE id = ?
+        """, (item['producto_id'],))
+
+        stock_actual = int(cursor.fetchone()[0])
+
+        if item['cantidad'] > stock_actual:
+
+            flash(
+                f"Stock insuficiente para {item['nombre']}. Disponible: {stock_actual}"
+            )
+
+            return redirect('/ventas')
+        
+    total = sum(
+        item['subtotal']
+        for item in carrito
+    )
+
+    cursor.execute("""
+        INSERT INTO ventas
+        (total, usuario_id)
+        VALUES (?, NULL)
+    """, (total,))
+
+    conexion.commit()
+
+    cursor.execute(
+        "SELECT MAX(id) FROM ventas"
+    )
+
+    venta_id = cursor.fetchone()[0]
+
+    for item in carrito:
+
+        cursor.execute("""
+            INSERT INTO detalle_ventas
+            (
+                venta_id,
+                producto_id,
+                cantidad,
+                precio_unitario,
+                subtotal
+            )
+            VALUES (?, ?, ?, ?, ?)
+        """,
+        (
+            venta_id,
+            item['producto_id'],
+            item['cantidad'],
+            item['precio'],
+            item['subtotal']
+        ))
+
+        cursor.execute("""
+            UPDATE productos
+            SET stock = stock - ?
+            WHERE id = ?
+        """,
+        (
+            item['cantidad'],
+            item['producto_id']
+        ))
+
+        cursor.execute("""
+            INSERT INTO movimientos_inventario
+            (
+                producto_id,
+                tipo_movimiento,
+                cantidad
+            )
+            VALUES (?, ?, ?)
+        """,
+        (
+            item['producto_id'],
+            'SALIDA',
+            item['cantidad']
+        ))
+
+    conexion.commit()
+
+    session['carrito'] = []
+
+    flash(
+        f'Venta registrada correctamente. Total: S/. {total:.2f}'
+    )
+
+    return redirect('/ventas')
 
 @app.route('/historial_ventas')
 def historial_ventas():
@@ -376,9 +656,10 @@ def historial_ventas():
     ventas = cursor.fetchall()
 
     return render_template(
-        'historial_ventas.html',
+        'ventas/historial_ventas.html',
         ventas=ventas
     )
+
 
 @app.route('/detalle_venta/<int:venta_id>')
 def detalle_venta(venta_id):
@@ -398,7 +679,7 @@ def detalle_venta(venta_id):
     detalles = cursor.fetchall()
 
     return render_template(
-        'detalle_venta.html',
+        'ventas/detalle_venta.html',
         detalles=detalles
     )
 
@@ -421,7 +702,7 @@ def movimientos_inventario():
     movimientos = cursor.fetchall()
 
     return render_template(
-        'movimientos_inventario.html',
+        'inventario/movimientos_inventario.html',
         movimientos=movimientos
     )
 
@@ -439,7 +720,7 @@ def alertas_stock():
     productos = cursor.fetchall()
 
     return render_template(
-        'alertas_stock.html',
+        'inventario/alertas_stock.html',
         productos=productos
     )
 
@@ -493,17 +774,404 @@ def entrada_inventario():
     productos = cursor.fetchall()
 
     return render_template(
-        'entrada_inventario.html',
-        productos=productos
+        'inventario/entrada_inventario.html',
+        productos=productos,
+        entrada_inventario=session.get(
+            'entrada_inventario',
+            []
+        )
     )
-@app.route('/prediccion')
+
+@app.route('/agregar_entrada', methods=['POST'])
+def agregar_entrada():
+
+    producto_id = int(request.form['producto_id'])
+    cantidad = int(request.form['cantidad'])
+
+    cursor.execute("""
+        SELECT nombre
+        FROM productos
+        WHERE id = ?
+    """, (producto_id,))
+
+    producto = cursor.fetchone()
+
+    nombre = producto[0]
+
+    entrada = session.get(
+        'entrada_inventario',
+        []
+    )
+
+    encontrado = False
+
+    for item in entrada:
+
+        if item['producto_id'] == producto_id:
+
+            item['cantidad'] += cantidad
+            encontrado = True
+            break
+
+    if not encontrado:
+
+        entrada.append({
+            'producto_id': producto_id,
+            'nombre': nombre,
+            'cantidad': cantidad
+        })
+
+    session['entrada_inventario'] = entrada
+
+    flash('Producto agregado')
+
+    return redirect('/entrada_inventario')
+
+@app.route('/eliminar_entrada/<int:indice>')
+def eliminar_entrada(indice):
+
+    entrada = session.get(
+        'entrada_inventario',
+        []
+    )
+
+    if 0 <= indice < len(entrada):
+
+        entrada.pop(indice)
+
+    session['entrada_inventario'] = entrada
+
+    flash('Producto eliminado')
+
+    return redirect('/entrada_inventario')
+
+@app.route('/confirmar_entrada', methods=['POST'])
+def confirmar_entrada():
+
+    entrada = session.get(
+        'entrada_inventario',
+        []
+    )
+
+    if not entrada:
+
+        flash('No hay productos para registrar')
+
+        return redirect('/entrada_inventario')
+
+    for item in entrada:
+
+        cursor.execute("""
+            UPDATE productos
+            SET stock = stock + ?
+            WHERE id = ?
+        """,
+        (
+            item['cantidad'],
+            item['producto_id']
+        ))
+
+        cursor.execute("""
+            INSERT INTO movimientos_inventario
+            (
+                producto_id,
+                tipo_movimiento,
+                cantidad
+            )
+            VALUES (?, ?, ?)
+        """,
+        (
+            item['producto_id'],
+            'ENTRADA',
+            item['cantidad']
+        ))
+
+    conexion.commit()
+
+    session['entrada_inventario'] = []
+
+    flash(
+        'Entrada de inventario registrada correctamente'
+    )
+
+    return redirect('/entrada_inventario')
+@app.route('/vaciar_entrada')
+def vaciar_entrada():
+
+    session['entrada_inventario'] = []
+
+    flash('Lista vaciada')
+
+    return redirect('/entrada_inventario')
+
+@app.route('/prediccion', methods=['GET', 'POST'])
 def prediccion():
 
-    mes = 13
+    resultado = None
 
-    prediccion = modelo.predict(np.array([[mes]]))
+    if request.method == 'POST':
 
-    return f"Predicción de ventas para el mes {mes}: {prediccion[0]:.0f}"
+        producto_id = int(
+            request.form['producto_id']
+        )
+
+        anio = int(
+            request.form['anio']
+        )
+
+        mes = int(
+            request.form['mes']
+        )
+
+        resultado = modelo_ia.predict(
+            [[producto_id, anio, mes]]
+        )[0]
+
+    cursor.execute("""
+        SELECT id, nombre
+        FROM productos
+        ORDER BY nombre
+    """)
+
+    productos = cursor.fetchall()
+
+    return render_template(
+        'ia/prediccion.html',
+        productos=productos,
+        resultado=resultado
+    )
+
+@app.route('/predicciones_ia')
+def predicciones_ia():
+
+    buscar = request.args.get('buscar', '')
+
+    cursor.execute("""
+        SELECT
+            id,
+            nombre,
+            stock
+        FROM productos
+        ORDER BY nombre
+    """)
+
+    productos = cursor.fetchall()
+
+    predicciones = []
+
+    from datetime import datetime
+
+    hoy = datetime.now()
+
+    año = hoy.year
+    mes = hoy.month + 1
+
+    if mes > 12:
+        mes = 1
+        año += 1
+
+    predicciones_6_meses = []
+
+    resultado_busqueda = None
+
+    for producto in productos:
+
+        producto_id = producto[0]
+        nombre = producto[1]
+        stock = producto[2]
+    
+        
+
+        prediccion = round(
+            modelo_ia.predict(
+                [[producto_id, año, mes]]
+            )[0]
+        )
+        if buscar:
+
+            if buscar.lower() in nombre.lower():
+
+                resultado_busqueda = {
+
+                    'nombre': nombre,
+                    'stock': stock,
+                    'prediccion': prediccion,
+                    'reponer': max(0, prediccion - stock)
+
+                }
+
+                predicciones_6_meses = []
+
+                for i in range(1, 7):
+
+                    mes_futuro = mes + i
+                    anio_futuro = año
+
+                    if mes_futuro > 12:
+                        mes_futuro -= 12
+                        anio_futuro += 1
+
+                    pred_futura = round(
+                        modelo_ia.predict(
+                            [[producto_id, anio_futuro, mes_futuro]]
+                        )[0]
+                    )
+
+                    predicciones_6_meses.append({
+
+                        'anio': anio_futuro,
+                        'mes': mes_futuro,
+                        'prediccion': pred_futura
+
+                    })
+
+                
+
+        predicciones.append({
+
+            'nombre': nombre,
+            'stock': stock,
+            'prediccion': prediccion,
+            'reponer': max(0, prediccion - stock)
+
+        })
+
+    alertas = [
+        p for p in predicciones
+        if p['reponer'] > 0
+    ]
+    labels_grafico = []
+    datos_grafico = []
+
+    for pred in predicciones_6_meses:
+
+        labels_grafico.append(
+            f"{pred['mes']}/{pred['anio']}"
+        )
+
+        datos_grafico.append(
+            pred['prediccion']
+        )
+
+    return render_template(
+        'ia/predicciones_ia.html',
+        predicciones=predicciones,
+        alertas=alertas,
+        buscar=buscar,
+        resultado_busqueda=resultado_busqueda,
+        predicciones_6_meses=predicciones_6_meses,
+        labels_grafico=labels_grafico,
+        datos_grafico=datos_grafico
+    )
+
+@app.route('/exportar_excel_ia')
+def exportar_excel_ia():
+
+    cursor.execute("""
+        SELECT
+            id,
+            nombre,
+            stock
+        FROM productos
+        ORDER BY nombre
+    """)
+
+    productos = cursor.fetchall()
+
+    hoy = datetime.now()
+
+    año = hoy.year
+    mes = hoy.month + 1
+
+    if mes > 12:
+        mes = 1
+        año += 1
+
+    predicciones = []
+
+    for producto in productos:
+
+        producto_id = producto[0]
+        nombre = producto[1]
+        stock = producto[2]
+
+        prediccion = round(
+            modelo_ia.predict(
+                [[producto_id, año, mes]]
+            )[0]
+        )
+
+        predicciones.append({
+
+            'Producto': nombre,
+            'Stock': stock,
+            'Prediccion': prediccion,
+            'Reponer': max(0, prediccion - stock)
+
+        })
+
+    alertas = [
+        p for p in predicciones
+        if p['Reponer'] > 0
+    ]
+
+    output = BytesIO()
+
+    resumen = pd.DataFrame({
+
+        'Indicador': [
+
+            'Fecha Reporte',
+            'Productos Analizados',
+            'Alertas Generadas',
+            'Mayor Demanda',
+            'Menor Demanda'
+
+        ],
+
+        'Valor': [
+
+            datetime.now().strftime('%d/%m/%Y'),
+            len(predicciones),
+            len(alertas),
+            max(predicciones, key=lambda x: x['Prediccion'])['Producto'],
+            min(predicciones, key=lambda x: x['Prediccion'])['Producto']
+
+        ]
+
+    })
+
+    with pd.ExcelWriter(
+        output,
+        engine='openpyxl'
+    ) as writer:
+        
+        resumen.to_excel(
+            writer,
+            sheet_name='Resumen IA',
+            index=False
+        )
+
+        pd.DataFrame(alertas).to_excel(
+            writer,
+            sheet_name='Alertas IA',
+            index=False
+        )
+
+        pd.DataFrame(predicciones).to_excel(
+            writer,
+            sheet_name='Predicciones',
+            index=False
+        )
+
+    output.seek(0)
+
+    return send_file(
+        output,
+        as_attachment=True,
+        download_name=f'Reporte_IA_{datetime.now().strftime("%Y-%m-%d")}.xlsx',
+        mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+    )
 
 
 @app.route('/agregar_producto', methods=['GET', 'POST'])
@@ -556,7 +1224,7 @@ def agregar_producto():
     proveedores = cursor.fetchall()
 
     return render_template(
-        'agregar_producto.html',
+        'productos/agregar_producto.html',
         categorias=categorias,
         proveedores=proveedores
     )
@@ -579,14 +1247,29 @@ def editar_producto(id):
     if request.method == 'POST':
 
         nombre = request.form['nombre']
+        categoria_id = request.form['categoria_id']
+        proveedor_id = request.form['proveedor_id']
         precio = request.form['precio']
         stock = request.form['stock']
 
         cursor.execute("""
             UPDATE productos
-            SET nombre = ?, precio = ?, stock = ?
+            SET
+                nombre = ?,
+                categoria_id = ?,
+                proveedor_id = ?,
+                precio = ?,
+                stock = ?
             WHERE id = ?
-        """, (nombre, precio, stock, id))
+        """,
+        (
+            nombre,
+            categoria_id,
+            proveedor_id,
+            precio,
+            stock,
+            id
+        ))
 
         conexion.commit()
 
@@ -599,9 +1282,25 @@ def editar_producto(id):
 
     producto = cursor.fetchone()
 
+    cursor.execute("""
+        SELECT id, nombre
+        FROM categorias
+        ORDER BY nombre
+    """)
+    categorias = cursor.fetchall()
+
+    cursor.execute("""
+        SELECT id, nombre
+        FROM proveedores
+        ORDER BY nombre
+    """)
+    proveedores = cursor.fetchall()
+
     return render_template(
-        'editar_producto.html',
-        producto=producto
+        'productos/editar_producto.html',
+        producto=producto,
+        categorias=categorias,
+        proveedores=proveedores
     )
 
 if __name__ == '__main__':

@@ -1,0 +1,1075 @@
+producto,año,mes,cantidad_vendida
+Lapicero,2023,1,45
+Lapicero,2023,2,58
+Lapicero,2023,3,83
+Lapicero,2023,4,41
+Lapicero,2023,5,48
+Lapicero,2023,6,37
+Lapicero,2023,7,32
+Lapicero,2023,8,54
+Lapicero,2023,9,47
+Lapicero,2023,10,39
+Lapicero,2023,11,35
+Lapicero,2023,12,28
+Lapicero,2024,1,49
+Lapicero,2024,2,64
+Lapicero,2024,3,89
+Lapicero,2024,4,44
+Lapicero,2024,5,51
+Lapicero,2024,6,39
+Lapicero,2024,7,35
+Lapicero,2024,8,58
+Lapicero,2024,9,52
+Lapicero,2024,10,42
+Lapicero,2024,11,38
+Lapicero,2024,12,31
+Lapicero,2025,1,53
+Lapicero,2025,2,68
+Lapicero,2025,3,94
+Lapicero,2025,4,47
+Lapicero,2025,5,53
+Lapicero,2025,6,42
+Lapicero,2025,7,38
+Lapicero,2025,8,62
+Lapicero,2025,9,55
+Lapicero,2025,10,46
+Lapicero,2025,11,41
+Lapicero,2025,12,34
+Lapicero,2026,1,56
+Lapicero,2026,2,72
+Lapicero,2026,3,98
+Lapicero,2026,4,50
+Lapicero,2026,5,55
+Lapicero,2026,6,44
+
+Cuaderno A4,2023,1,38
+Cuaderno A4,2023,2,62
+Cuaderno A4,2023,3,78
+Cuaderno A4,2023,4,24
+Cuaderno A4,2023,5,21
+Cuaderno A4,2023,6,18
+Cuaderno A4,2023,7,14
+Cuaderno A4,2023,8,29
+Cuaderno A4,2023,9,25
+Cuaderno A4,2023,10,19
+Cuaderno A4,2023,11,15
+Cuaderno A4,2023,12,11
+Cuaderno A4,2024,1,42
+Cuaderno A4,2024,2,67
+Cuaderno A4,2024,3,84
+Cuaderno A4,2024,4,27
+Cuaderno A4,2024,5,23
+Cuaderno A4,2024,6,19
+Cuaderno A4,2024,7,16
+Cuaderno A4,2024,8,32
+Cuaderno A4,2024,9,28
+Cuaderno A4,2024,10,22
+Cuaderno A4,2024,11,17
+Cuaderno A4,2024,12,13
+Cuaderno A4,2025,1,45
+Cuaderno A4,2025,2,71
+Cuaderno A4,2025,3,89
+Cuaderno A4,2025,4,29
+Cuaderno A4,2025,5,25
+Cuaderno A4,2025,6,21
+Cuaderno A4,2025,7,17
+Cuaderno A4,2025,8,35
+Cuaderno A4,2025,9,31
+Cuaderno A4,2025,10,24
+Cuaderno A4,2025,11,19
+Cuaderno A4,2025,12,15
+Cuaderno A4,2026,1,48
+Cuaderno A4,2026,2,75
+Cuaderno A4,2026,3,93
+Cuaderno A4,2026,4,31
+Cuaderno A4,2026,5,27
+Cuaderno A4,2026,6,23
+
+Lápiz,2023,1,52
+Lápiz,2023,2,67
+Lápiz,2023,3,91
+Lápiz,2023,4,44
+Lápiz,2023,5,38
+Lápiz,2023,6,32
+Lápiz,2023,7,29
+Lápiz,2023,8,48
+Lápiz,2023,9,43
+Lápiz,2023,10,36
+Lápiz,2023,11,31
+Lápiz,2023,12,24
+Lápiz,2024,1,56
+Lápiz,2024,2,73
+Lápiz,2024,3,97
+Lápiz,2024,4,48
+Lápiz,2024,5,41
+Lápiz,2024,6,35
+Lápiz,2024,7,31
+Lápiz,2024,8,52
+Lápiz,2024,9,47
+Lápiz,2024,10,39
+Lápiz,2024,11,34
+Lápiz,2024,12,26
+Lápiz,2025,1,61
+Lápiz,2025,2,78
+Lápiz,2025,3,104
+Lápiz,2025,4,51
+Lápiz,2025,5,44
+Lápiz,2025,6,38
+Lápiz,2025,7,34
+Lápiz,2025,8,56
+Lápiz,2025,9,51
+Lápiz,2025,10,42
+Lápiz,2025,11,37
+Lápiz,2025,12,29
+Lápiz,2026,1,65
+Lápiz,2026,2,84
+Lápiz,2026,3,110
+Lápiz,2026,4,54
+Lápiz,2026,5,47
+Lápiz,2026,6,41
+
+Borrador,2023,1,24
+Borrador,2023,2,36
+Borrador,2023,3,48
+Borrador,2023,4,21
+Borrador,2023,5,18
+Borrador,2023,6,14
+Borrador,2023,7,11
+Borrador,2023,8,26
+Borrador,2023,9,22
+Borrador,2023,10,17
+Borrador,2023,11,14
+Borrador,2023,12,9
+Borrador,2024,1,27
+Borrador,2024,2,41
+Borrador,2024,3,53
+Borrador,2024,4,23
+Borrador,2024,5,19
+Borrador,2024,6,16
+Borrador,2024,7,13
+Borrador,2024,8,29
+Borrador,2024,9,24
+Borrador,2024,10,19
+Borrador,2024,11,15
+Borrador,2024,12,11
+Borrador,2025,1,29
+Borrador,2025,2,44
+Borrador,2025,3,57
+Borrador,2025,4,25
+Borrador,2025,5,21
+Borrador,2025,6,18
+Borrador,2025,7,14
+Borrador,2025,8,32
+Borrador,2025,9,27
+Borrador,2025,10,21
+Borrador,2025,11,17
+Borrador,2025,12,12
+Borrador,2026,1,32
+Borrador,2026,2,48
+Borrador,2026,3,62
+Borrador,2026,4,27
+Borrador,2026,5,23
+Borrador,2026,6,19
+
+Tajador,2023,1,14
+Tajador,2023,2,23
+Tajador,2023,3,31
+Tajador,2023,4,12
+Tajador,2023,5,9
+Tajador,2023,6,7
+Tajador,2023,7,5
+Tajador,2023,8,16
+Tajador,2023,9,13
+Tajador,2023,10,11
+Tajador,2023,11,8
+Tajador,2023,12,6
+Tajador,2024,1,16
+Tajador,2024,2,26
+Tajador,2024,3,35
+Tajador,2024,4,14
+Tajador,2024,5,11
+Tajador,2024,6,8
+Tajador,2024,7,6
+Tajador,2024,8,18
+Tajador,2024,9,15
+Tajador,2024,10,12
+Tajador,2024,11,9
+Tajador,2024,12,7
+Tajador,2025,1,18
+Tajador,2025,2,29
+Tajador,2025,3,38
+Tajador,2025,4,15
+Tajador,2025,5,12
+Tajador,2025,6,9
+Tajador,2025,7,7
+Tajador,2025,8,21
+Tajador,2025,9,17
+Tajador,2025,10,14
+Tajador,2025,11,11
+Tajador,2025,12,8
+Tajador,2026,1,20
+Tajador,2026,2,32
+Tajador,2026,3,42
+Tajador,2026,4,17
+Tajador,2026,5,13
+Tajador,2026,6,10
+
+Plumones,2023,1,18
+Plumones,2023,2,29
+Plumones,2023,3,38
+Plumones,2023,4,15
+Plumones,2023,5,12
+Plumones,2023,6,10
+Plumones,2023,7,8
+Plumones,2023,8,22
+Plumones,2023,9,17
+Plumones,2023,10,14
+Plumones,2023,11,11
+Plumones,2023,12,7
+Plumones,2024,1,21
+Plumones,2024,2,33
+Plumones,2024,3,42
+Plumones,2024,4,17
+Plumones,2024,5,14
+Plumones,2024,6,11
+Plumones,2024,7,9
+Plumones,2024,8,25
+Plumones,2024,9,20
+Plumones,2024,10,16
+Plumones,2024,11,13
+Plumones,2024,12,9
+Plumones,2025,1,23
+Plumones,2025,2,36
+Plumones,2025,3,46
+Plumones,2025,4,19
+Plumones,2025,5,15
+Plumones,2025,6,12
+Plumones,2025,7,10
+Plumones,2025,8,28
+Plumones,2025,9,22
+Plumones,2025,10,18
+Plumones,2025,11,14
+Plumones,2025,12,11
+Plumones,2026,1,25
+Plumones,2026,2,40
+Plumones,2026,3,51
+Plumones,2026,4,21
+Plumones,2026,5,17
+Plumones,2026,6,13
+
+Corrector,2023,1,11
+Corrector,2023,2,18
+Corrector,2023,3,24
+Corrector,2023,4,9
+Corrector,2023,5,8
+Corrector,2023,6,6
+Corrector,2023,7,5
+Corrector,2023,8,13
+Corrector,2023,9,11
+Corrector,2023,10,9
+Corrector,2023,11,7
+Corrector,2023,12,4
+Corrector,2024,1,13
+Corrector,2024,2,21
+Corrector,2024,3,28
+Corrector,2024,4,11
+Corrector,2024,5,9
+Corrector,2024,6,7
+Corrector,2024,7,6
+Corrector,2024,8,15
+Corrector,2024,9,13
+Corrector,2024,10,10
+Corrector,2024,11,8
+Corrector,2024,12,5
+Corrector,2025,1,14
+Corrector,2025,2,23
+Corrector,2025,3,31
+Corrector,2025,4,12
+Corrector,2025,5,10
+Corrector,2025,6,8
+Corrector,2025,7,6
+Corrector,2025,8,17
+Corrector,2025,9,14
+Corrector,2025,10,11
+Corrector,2025,11,9
+Corrector,2025,12,6
+Corrector,2026,1,16
+Corrector,2026,2,26
+Corrector,2026,3,35
+Corrector,2026,4,14
+Corrector,2026,5,11
+Corrector,2026,6,9
+
+Resaltador,2023,1,15
+Resaltador,2023,2,24
+Resaltador,2023,3,32
+Resaltador,2023,4,14
+Resaltador,2023,5,11
+Resaltador,2023,6,9
+Resaltador,2023,7,7
+Resaltador,2023,8,18
+Resaltador,2023,9,15
+Resaltador,2023,10,12
+Resaltador,2023,11,10
+Resaltador,2023,12,6
+Resaltador,2024,1,17
+Resaltador,2024,2,27
+Resaltador,2024,3,36
+Resaltador,2024,4,16
+Resaltador,2024,5,13
+Resaltador,2024,6,10
+Resaltador,2024,7,8
+Resaltador,2024,8,21
+Resaltador,2024,9,17
+Resaltador,2024,10,14
+Resaltador,2024,11,11
+Resaltador,2024,12,8
+Resaltador,2025,1,19
+Resaltador,2025,2,30
+Resaltador,2025,3,40
+Resaltador,2025,4,18
+Resaltador,2025,5,14
+Resaltador,2025,6,11
+Resaltador,2025,7,9
+Resaltador,2025,8,23
+Resaltador,2025,9,19
+Resaltador,2025,10,15
+Resaltador,2025,11,12
+Resaltador,2025,12,9
+Resaltador,2026,1,21
+Resaltador,2026,2,34
+Resaltador,2026,3,44
+Resaltador,2026,4,20
+Resaltador,2026,5,16
+Resaltador,2026,6,11
+
+Papel Bond,2023,1,34
+Papel Bond,2023,2,48
+Papel Bond,2023,3,65
+Papel Bond,2023,4,38
+Papel Bond,2023,5,42
+Papel Bond,2023,6,31
+Papel Bond,2023,7,27
+Papel Bond,2023,8,45
+Papel Bond,2023,9,49
+Papel Bond,2023,10,53
+Papel Bond,2023,11,56
+Papel Bond,2023,12,41
+Papel Bond,2024,1,38
+Papel Bond,2024,2,53
+Papel Bond,2024,3,72
+Papel Bond,2024,4,42
+Papel Bond,2024,5,46
+Papel Bond,2024,6,35
+Papel Bond,2024,7,30
+Papel Bond,2024,8,51
+Papel Bond,2024,9,54
+Papel Bond,2024,10,59
+Papel Bond,2024,11,62
+Papel Bond,2024,12,46
+Papel Bond,2025,1,42
+Papel Bond,2025,2,59
+Papel Bond,2025,3,78
+Papel Bond,2025,4,47
+Papel Bond,2025,5,51
+Papel Bond,2025,6,39
+Papel Bond,2025,7,34
+Papel Bond,2025,8,56
+Papel Bond,2025,9,61
+Papel Bond,2025,10,65
+Papel Bond,2025,11,68
+Papel Bond,2025,12,52
+Papel Bond,2026,1,46
+Papel Bond,2026,2,64
+Papel Bond,2026,3,84
+Papel Bond,2026,4,51
+Papel Bond,2026,5,56
+Papel Bond,2026,6,43
+
+Folder,2023,1,18
+Folder,2023,2,32
+Folder,2023,3,45
+Folder,2023,4,16
+Folder,2023,5,14
+Folder,2023,6,11
+Folder,2023,7,9
+Folder,2023,8,22
+Folder,2023,9,19
+Folder,2023,10,15
+Folder,2023,11,12
+Folder,2023,12,8
+Folder,2024,1,22
+Folder,2024,2,37
+Folder,2024,3,51
+Folder,2024,4,19
+Folder,2024,5,16
+Folder,2024,6,13
+Folder,2024,7,11
+Folder,2024,8,26
+Folder,2024,9,22
+Folder,2024,10,18
+Folder,2024,11,14
+Folder,2024,12,10
+Folder,2025,1,25
+Folder,2025,2,42
+Folder,2025,3,56
+Folder,2025,4,22
+Folder,2025,5,18
+Folder,2025,6,15
+Folder,2025,7,12
+Folder,2025,8,31
+Folder,2025,9,26
+Folder,2025,10,21
+Folder,2025,11,16
+Folder,2025,12,12
+Folder,2026,1,29
+Folder,2026,2,47
+Folder,2026,3,63
+Folder,2026,4,25
+Folder,2026,5,21
+Folder,2026,6,17
+
+Cartulina,2023,1,16
+Cartulina,2023,2,28
+Cartulina,2023,3,49
+Cartulina,2023,4,34
+Cartulina,2023,5,38
+Cartulina,2023,6,27
+Cartulina,2023,7,21
+Cartulina,2023,8,35
+Cartulina,2023,9,39
+Cartulina,2023,10,42
+Cartulina,2023,11,46
+Cartulina,2023,12,25
+Cartulina,2024,1,19
+Cartulina,2024,2,32
+Cartulina,2024,3,55
+Cartulina,2024,4,39
+Cartulina,2024,5,43
+Cartulina,2024,6,31
+Cartulina,2024,7,24
+Cartulina,2024,8,41
+Cartulina,2024,9,44
+Cartulina,2024,10,48
+Cartulina,2024,11,51
+Cartulina,2024,12,29
+Cartulina,2025,1,22
+Cartulina,2025,2,36
+Cartulina,2025,3,61
+Cartulina,2025,4,43
+Cartulina,2025,5,48
+Cartulina,2025,6,35
+Cartulina,2025,7,27
+Cartulina,2025,8,46
+Cartulina,2025,9,51
+Cartulina,2025,10,54
+Cartulina,2025,11,57
+Cartulina,2025,12,33
+Cartulina,2026,1,25
+Cartulina,2026,2,41
+Cartulina,2026,3,68
+Cartulina,2026,4,48
+Cartulina,2026,5,53
+Cartulina,2026,6,39
+
+Silicona,2023,1,9
+Silicona,2023,2,15
+Silicona,2023,3,26
+Silicona,2023,4,14
+Silicona,2023,5,16
+Silicona,2023,6,12
+Silicona,2023,7,9
+Silicona,2023,8,18
+Silicona,2023,9,21
+Silicona,2023,10,23
+Silicona,2023,11,25
+Silicona,2023,12,13
+Silicona,2024,1,11
+Silicona,2024,2,18
+Silicona,2024,3,31
+Silicona,2024,4,16
+Silicona,2024,5,19
+Silicona,2024,6,14
+Silicona,2024,7,11
+Silicona,2024,8,22
+Silicona,2024,9,24
+Silicona,2024,10,26
+Silicona,2024,11,28
+Silicona,2024,12,16
+Silicona,2025,1,13
+Silicona,2025,2,21
+Silicona,2025,3,35
+Silicona,2025,4,19
+Silicona,2025,5,22
+Silicona,2025,6,16
+Silicona,2025,7,13
+Silicona,2025,8,25
+Silicona,2025,9,28
+Silicona,2025,10,31
+Silicona,2025,11,33
+Silicona,2025,12,18
+Silicona,2026,1,15
+Silicona,2026,2,24
+Silicona,2026,3,39
+Silicona,2026,4,21
+Silicona,2026,5,25
+Silicona,2026,6,19
+
+Tijera,2023,1,6
+Tijera,2023,2,14
+Tijera,2023,3,22
+Tijera,2023,4,8
+Tijera,2023,5,6
+Tijera,2023,6,5
+Tijera,2023,7,4
+Tijera,2023,8,9
+Tijera,2023,9,7
+Tijera,2023,10,6
+Tijera,2023,11,5
+Tijera,2023,12,3
+Tijera,2024,1,8
+Tijera,2024,2,16
+Tijera,2024,3,25
+Tijera,2024,4,11
+Tijera,2024,5,8
+Tijera,2024,6,6
+Tijera,2024,7,5
+Tijera,2024,8,12
+Tijera,2024,9,9
+Tijera,2024,10,7
+Tijera,2024,11,6
+Tijera,2024,12,4
+Tijera,2025,1,9
+Tijera,2025,2,19
+Tijera,2025,3,28
+Tijera,2025,4,13
+Tijera,2025,5,10
+Tijera,2025,6,7
+Tijera,2025,7,6
+Tijera,2025,8,14
+Tijera,2025,9,11
+Tijera,2025,10,8
+Tijera,2025,11,7
+Tijera,2025,12,5
+Tijera,2026,1,11
+Tijera,2026,2,21
+Tijera,2026,3,32
+Tijera,2026,4,15
+Tijera,2026,5,11
+Tijera,2026,6,8
+
+Cinta Adhesiva,2023,1,14
+Cinta Adhesiva,2023,2,21
+Cinta Adhesiva,2023,3,28
+Cinta Adhesiva,2023,4,16
+Cinta Adhesiva,2023,5,14
+Cinta Adhesiva,2023,6,12
+Cinta Adhesiva,2023,7,11
+Cinta Adhesiva,2023,8,19
+Cinta Adhesiva,2023,9,17
+Cinta Adhesiva,2023,10,22
+Cinta Adhesiva,2023,11,24
+Cinta Adhesiva,2023,12,26
+Cinta Adhesiva,2024,1,16
+Cinta Adhesiva,2024,2,24
+Cinta Adhesiva,2024,3,31
+Cinta Adhesiva,2024,4,19
+Cinta Adhesiva,2024,5,16
+Cinta Adhesiva,2024,6,14
+Cinta Adhesiva,2024,7,13
+Cinta Adhesiva,2024,8,22
+Cinta Adhesiva,2024,9,19
+Cinta Adhesiva,2024,10,25
+Cinta Adhesiva,2024,11,27
+Cinta Adhesiva,2024,12,29
+Cinta Adhesiva,2025,1,18
+Cinta Adhesiva,2025,2,26
+Cinta Adhesiva,2025,3,34
+Cinta Adhesiva,2025,4,21
+Cinta Adhesiva,2025,5,18
+Cinta Adhesiva,2025,6,16
+Cinta Adhesiva,2025,7,14
+Cinta Adhesiva,2025,8,25
+Cinta Adhesiva,2025,9,21
+Cinta Adhesiva,2025,10,27
+Cinta Adhesiva,2025,11,29
+Cinta Adhesiva,2025,12,32
+Cinta Adhesiva,2026,1,21
+Cinta Adhesiva,2026,2,29
+Cinta Adhesiva,2026,3,38
+Cinta Adhesiva,2026,4,24
+Cinta Adhesiva,2026,5,20
+Cinta Adhesiva,2026,6,16
+
+Grapadora,2023,1,2
+Grapadora,2023,2,5
+Grapadora,2023,3,7
+Grapadora,2023,4,3
+Grapadora,2023,5,2
+Grapadora,2023,6,2
+Grapadora,2023,7,1
+Grapadora,2023,8,4
+Grapadora,2023,9,3
+Grapadora,2023,10,2
+Grapadora,2023,11,2
+Grapadora,2023,12,1
+Grapadora,2024,1,3
+Grapadora,2024,2,6
+Grapadora,2024,3,9
+Grapadora,2024,4,4
+Grapadora,2024,5,3
+Grapadora,2024,6,2
+Grapadora,2024,7,2
+Grapadora,2024,8,5
+Grapadora,2024,9,4
+Grapadora,2024,10,3
+Grapadora,2024,11,3
+Grapadora,2024,12,1
+Grapadora,2025,1,4
+Grapadora,2025,2,7
+Grapadora,2025,3,11
+Grapadora,2025,4,4
+Grapadora,2025,5,3
+Grapadora,2025,6,3
+Grapadora,2025,7,2
+Grapadora,2025,8,6
+Grapadora,2025,9,5
+Grapadora,2025,10,4
+Grapadora,2025,11,3
+Grapadora,2025,12,2
+Grapadora,2026,1,5
+Grapadora,2026,2,8
+Grapadora,2026,3,13
+Grapadora,2026,4,5
+Grapadora,2026,5,4
+Grapadora,2026,6,3
+
+Grapas,2023,1,4
+Grapas,2023,2,7
+Grapas,2023,3,11
+Grapas,2023,4,6
+Grapas,2023,5,5
+Grapas,2023,6,4
+Grapas,2023,7,3
+Grapas,2023,8,8
+Grapas,2023,9,6
+Grapas,2023,10,5
+Grapas,2023,11,4
+Grapas,2023,12,2
+Grapas,2024,1,5
+Grapas,2024,2,9
+Grapas,2024,3,13
+Grapas,2024,4,7
+Grapas,2024,5,6
+Grapas,2024,6,5
+Grapas,2024,7,4
+Grapas,2024,8,10
+Grapas,2024,9,8
+Grapas,2024,10,7
+Grapas,2024,11,6
+Grapas,2024,12,3
+Grapas,2025,1,6
+Grapas,2025,2,11
+Grapas,2025,3,15
+Grapas,2025,4,8
+Grapas,2025,5,7
+Grapas,2025,6,6
+Grapas,2025,7,5
+Grapas,2025,8,11
+Grapas,2025,9,9
+Grapas,2025,10,8
+Grapas,2025,11,7
+Grapas,2025,12,4
+Grapas,2026,1,7
+Grapas,2026,2,13
+Grapas,2026,3,18
+Grapas,2026,4,9
+Grapas,2026,5,8
+Grapas,2026,6,6
+
+Archivador,2023,1,1
+Archivador,2023,2,3
+Archivador,2023,3,5
+Archivador,2023,4,2
+Archivador,2023,5,2
+Archivador,2023,6,1
+Archivador,2023,7,1
+Archivador,2023,8,3
+Archivador,2023,9,2
+Archivador,2023,10,2
+Archivador,2023,11,1
+Archivador,2023,12,1
+Archivador,2024,1,2
+Archivador,2024,2,4
+Archivador,2024,3,6
+Archivador,2024,4,3
+Archivador,2024,5,2
+Archivador,2024,6,1
+Archivador,2024,7,1
+Archivador,2024,8,4
+Archivador,2024,9,3
+Archivador,2024,10,2
+Archivador,2024,11,2
+Archivador,2024,12,1
+Archivador,2025,1,2
+Archivador,2025,2,5
+Archivador,2025,3,7
+Archivador,2025,4,3
+Archivador,2025,5,3
+Archivador,2025,6,2
+Archivador,2025,7,1
+Archivador,2025,8,4
+Archivador,2025,9,3
+Archivador,2025,10,3
+Archivador,2025,11,2
+Archivador,2025,12,1
+Archivador,2026,1,3
+Archivador,2026,2,6
+Archivador,2026,3,8
+Archivador,2026,4,4
+Archivador,2026,5,3
+Archivador,2026,6,2
+
+Pinceles,2023,1,1
+Pinceles,2023,2,2
+Pinceles,2023,3,3
+Pinceles,2023,4,1
+Pinceles,2023,5,1
+Pinceles,2023,6,1
+Pinceles,2023,7,0
+Pinceles,2023,8,2
+Pinceles,2023,9,2
+Pinceles,2023,10,1
+Pinceles,2023,11,1
+Pinceles,2023,12,0
+Pinceles,2024,1,1
+Pinceles,2024,2,3
+Pinceles,2024,3,5
+Pinceles,2024,4,2
+Pinceles,2024,5,1
+Pinceles,2024,6,1
+Pinceles,2024,7,1
+Pinceles,2024,8,3
+Pinceles,2024,9,2
+Pinceles,2024,10,1
+Pinceles,2024,11,1
+Pinceles,2024,12,1
+Pinceles,2025,1,2
+Pinceles,2025,2,4
+Pinceles,2025,3,6
+Pinceles,2025,4,2
+Pinceles,2025,5,2
+Pinceles,2025,6,1
+Pinceles,2025,7,1
+Pinceles,2025,8,4
+Pinceles,2025,9,3
+Pinceles,2025,10,2
+Pinceles,2025,11,1
+Pinceles,2025,12,1
+Pinceles,2026,1,2
+Pinceles,2026,2,5
+Pinceles,2026,3,7
+Pinceles,2026,4,3
+Pinceles,2026,5,2
+Pinceles,2026,6,1
+
+Temperas,2023,1,22
+Temperas,2023,2,45
+Temperas,2023,3,68
+Temperas,2023,4,28
+Temperas,2023,5,24
+Temperas,2023,6,19
+Temperas,2023,7,14
+Temperas,2023,8,32
+Temperas,2023,9,29
+Temperas,2023,10,25
+Temperas,2023,11,21
+Temperas,2023,12,15
+Temperas,2024,1,25
+Temperas,2024,2,51
+Temperas,2024,3,76
+Temperas,2024,4,32
+Temperas,2024,5,28
+Temperas,2024,6,22
+Temperas,2024,7,17
+Temperas,2024,8,37
+Temperas,2024,9,33
+Temperas,2024,10,29
+Temperas,2024,11,24
+Temperas,2024,12,18
+Temperas,2025,1,29
+Temperas,2025,2,57
+Temperas,2025,3,84
+Temperas,2025,4,36
+Temperas,2025,5,31
+Temperas,2025,6,25
+Temperas,2025,7,20
+Temperas,2025,8,42
+Temperas,2025,9,37
+Temperas,2025,10,33
+Temperas,2025,11,27
+Temperas,2025,12,21
+Temperas,2026,1,33
+Temperas,2026,2,63
+Temperas,2026,3,92
+Temperas,2026,4,40
+Temperas,2026,5,35
+Temperas,2026,6,28
+
+Mochila Escolar,2023,1,8
+Mochila Escolar,2023,2,5
+Mochila Escolar,2023,3,6
+Mochila Escolar,2023,4,5
+Mochila Escolar,2023,5,3
+Mochila Escolar,2023,6,4
+Mochila Escolar,2023,7,1
+Mochila Escolar,2023,8,3
+Mochila Escolar,2023,9,3
+Mochila Escolar,2023,10,2
+Mochila Escolar,2023,11,2
+Mochila Escolar,2023,12,1
+Mochila Escolar,2024,1,2
+Mochila Escolar,2024,2,6
+Mochila Escolar,2024,3,8
+Mochila Escolar,2024,4,9
+Mochila Escolar,2024,5,3
+Mochila Escolar,2024,6,2
+Mochila Escolar,2024,7,1
+Mochila Escolar,2024,8,4
+Mochila Escolar,2024,9,9
+Mochila Escolar,2024,10,3
+Mochila Escolar,2024,11,2
+Mochila Escolar,2024,12,2
+Mochila Escolar,2025,1,6
+Mochila Escolar,2025,2,7
+Mochila Escolar,2025,3,9
+Mochila Escolar,2025,4,3
+Mochila Escolar,2025,5,3
+Mochila Escolar,2025,6,1
+Mochila Escolar,2025,7,4
+Mochila Escolar,2025,8,9
+Mochila Escolar,2025,9,4
+Mochila Escolar,2025,10,3
+Mochila Escolar,2025,11,2
+Mochila Escolar,2025,12,2
+Mochila Escolar,2026,1,1
+Mochila Escolar,2026,2,7
+Mochila Escolar,2026,3,1
+Mochila Escolar,2026,4,8
+Mochila Escolar,2026,5,3
+Mochila Escolar,2026,6,5  
+
+Calculadora,2023,1,2
+Calculadora,2023,2,5
+Calculadora,2023,3,8
+Calculadora,2023,4,3
+Calculadora,2023,5,2
+Calculadora,2023,6,1
+Calculadora,2023,7,1
+Calculadora,2023,8,4
+Calculadora,2023,9,3
+Calculadora,2023,10,2
+Calculadora,2023,11,1
+Calculadora,2023,12,1
+Calculadora,2024,1,3
+Calculadora,2024,2,6
+Calculadora,2024,3,10
+Calculadora,2024,4,4
+Calculadora,2024,5,3
+Calculadora,2024,6,2
+Calculadora,2024,7,1
+Calculadora,2024,8,5
+Calculadora,2024,9,4
+Calculadora,2024,10,3
+Calculadora,2024,11,2
+Calculadora,2024,12,1
+Calculadora,2025,1,4
+Calculadora,2025,2,7
+Calculadora,2025,3,12
+Calculadora,2025,4,4
+Calculadora,2025,5,3
+Calculadora,2025,6,2
+Calculadora,2025,7,2
+Calculadora,2025,8,6
+Calculadora,2025,9,4
+Calculadora,2025,10,3
+Calculadora,2025,11,2
+Calculadora,2025,12,1
+Calculadora,2026,1,4
+Calculadora,2026,2,9
+Calculadora,2026,3,14
+Calculadora,2026,4,5
+Calculadora,2026,5,4
+Calculadora,2026,6,3
+
+USB 32GB,2023,1,4
+USB 32GB,2023,2,6
+USB 32GB,2023,3,9
+USB 32GB,2023,4,5
+USB 32GB,2023,5,6
+USB 32GB,2023,6,4
+USB 32GB,2023,7,3
+USB 32GB,2023,8,7
+USB 32GB,2023,9,6
+USB 32GB,2023,10,5
+USB 32GB,2023,11,4
+USB 32GB,2023,12,3
+USB 32GB,2024,1,5
+USB 32GB,2024,2,7
+USB 32GB,2024,3,11
+USB 32GB,2024,4,6
+USB 32GB,2024,5,7
+USB 32GB,2024,6,5
+USB 32GB,2024,7,4
+USB 32GB,2024,8,9
+USB 32GB,2024,9,8
+USB 32GB,2024,10,6
+USB 32GB,2024,11,5
+USB 32GB,2024,12,4
+USB 32GB,2025,1,6
+USB 32GB,2025,2,9
+USB 32GB,2025,3,13
+USB 32GB,2025,4,7
+USB 32GB,2025,5,8
+USB 32GB,2025,6,6
+USB 32GB,2025,7,4
+USB 32GB,2025,8,10
+USB 32GB,2025,9,9
+USB 32GB,2025,10,7
+USB 32GB,2025,11,6
+USB 32GB,2025,12,4
+USB 32GB,2026,1,7
+USB 32GB,2026,2,11
+USB 32GB,2026,3,15
+USB 32GB,2026,4,9
+USB 32GB,2026,5,9
+USB 32GB,2026,6,7
+
+Papel Lustre,2023,1,15
+Papel Lustre,2023,2,28
+Papel Lustre,2023,3,54
+Papel Lustre,2023,4,36
+Papel Lustre,2023,5,42
+Papel Lustre,2023,6,31
+Papel Lustre,2023,7,22
+Papel Lustre,2023,8,39
+Papel Lustre,2023,9,37
+Papel Lustre,2023,10,44
+Papel Lustre,2023,11,48
+Papel Lustre,2023,12,24
+Papel Lustre,2024,1,19
+Papel Lustre,2024,2,34
+Papel Lustre,2024,3,62
+Papel Lustre,2024,4,41
+Papel Lustre,2024,5,48
+Papel Lustre,2024,6,35
+Papel Lustre,2024,7,25
+Papel Lustre,2024,8,45
+Papel Lustre,2024,9,42
+Papel Lustre,2024,10,51
+Papel Lustre,2024,11,54
+Papel Lustre,2024,12,27
+Papel Lustre,2025,1,21
+Papel Lustre,2025,2,38
+Papel Lustre,2025,3,68
+Papel Lustre,2025,4,45
+Papel Lustre,2025,5,52
+Papel Lustre,2025,6,38
+Papel Lustre,2025,7,27
+Papel Lustre,2025,8,49
+Papel Lustre,2025,9,46
+Papel Lustre,2025,10,56
+Papel Lustre,2025,11,59
+Papel Lustre,2025,12,30
+Papel Lustre,2026,1,24
+Papel Lustre,2026,2,43
+Papel Lustre,2026,3,75
+Papel Lustre,2026,4,50
+Papel Lustre,2026,5,57
+Papel Lustre,2026,6,41
+
+Pegamento,2023,1,18
+Pegamento,2023,2,32
+Pegamento,2023,3,46
+Pegamento,2023,4,26
+Pegamento,2023,5,29
+Pegamento,2023,6,22
+Pegamento,2023,7,19
+Pegamento,2023,8,31
+Pegamento,2023,9,28
+Pegamento,2023,10,32
+Pegamento,2023,11,34
+Pegamento,2023,12,22
+Pegamento,2024,1,22
+Pegamento,2024,2,38
+Pegamento,2024,3,55
+Pegamento,2024,4,31
+Pegamento,2024,5,34
+Pegamento,2024,6,26
+Pegamento,2024,7,22
+Pegamento,2024,8,36
+Pegamento,2024,9,32
+Pegamento,2024,10,37
+Pegamento,2024,11,39
+Pegamento,2024,12,25
+Pegamento,2025,1,24
+Pegamento,2025,2,41
+Pegamento,2025,3,60
+Pegamento,2025,4,34
+Pegamento,2025,5,36
+Pegamento,2025,6,28
+Pegamento,2025,7,24
+Pegamento,2025,8,40
+Pegamento,2025,9,35
+Pegamento,2025,10,41
+Pegamento,2025,11,43
+Pegamento,2025,12,27
+Pegamento,2026,1,27
+Pegamento,2026,2,46
+Pegamento,2026,3,67
+Pegamento,2026,4,38
+Pegamento,2026,5,40
+Pegamento,2026,6,31
+
+Escalimetro,2023,1,0
+Escalimetro,2023,2,1
+Escalimetro,2023,3,3
+Escalimetro,2023,4,1
+Escalimetro,2023,5,1
+Escalimetro,2023,6,0
+Escalimetro,2023,7,0
+Escalimetro,2023,8,2
+Escalimetro,2023,9,1
+Escalimetro,2023,10,1
+Escalimetro,2023,11,0
+Escalimetro,2023,12,0
+Escalimetro,2024,1,1
+Escalimetro,2024,2,2
+Escalimetro,2024,3,4
+Escalimetro,2024,4,1
+Escalimetro,2024,5,1
+Escalimetro,2024,6,1
+Escalimetro,2024,7,0
+Escalimetro,2024,8,2
+Escalimetro,2024,9,2
+Escalimetro,2024,10,1
+Escalimetro,2024,11,1
+Escalimetro,2024,12,0
+Escalimetro,2025,1,1
+Escalimetro,2025,2,2
+Escalimetro,2025,3,5
+Escalimetro,2025,4,2
+Escalimetro,2025,5,1
+Escalimetro,2025,6,1
+Escalimetro,2025,7,1
+Escalimetro,2025,8,3
+Escalimetro,2025,9,2
+Escalimetro,2025,10,1
+Escalimetro,2025,11,1
+Escalimetro,2025,12,0
+Escalimetro,2026,1,2
+Escalimetro,2026,2,3
+Escalimetro,2026,3,6
+Escalimetro,2026,4,2
+Escalimetro,2026,5,2
+Escalimetro,2026,6,1

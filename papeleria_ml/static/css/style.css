@@ -1,0 +1,43 @@
+body{
+    background-color:#f8fafc;
+}
+
+.layout{
+    display:flex;
+}
+
+.content{
+    flex:1;
+    padding: 30px;
+}
+
+.sidebar{
+    width:250px;
+    min-height:100vh;
+    background-color:#3c0000;
+    padding:20px;
+}
+
+.sidebar h3{
+    color:#dbbfac;
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.sidebar a{
+    display:block;
+    color:#dbbfac;
+    text-decoration:none;
+    padding:12px;
+    margin-bottom:8px;
+    border-radius:8px;
+}
+
+.sidebar a:hover{
+    background-color:#334155;
+}
+
+.content{
+    flex:1;
+    padding:30px;
+}

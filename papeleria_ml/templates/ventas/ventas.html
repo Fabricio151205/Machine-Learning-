@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registrar Venta</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+</head>
+<body>
+
+<div class="container mt-5">
+
+    <h2>Registrar Venta</h2>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+
+            {% for message in messages %}
+
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+
+            {% endfor %}
+
+        {% endif %}
+    {% endwith %}
+    <div class="mb-3">
+
+        <a href="/" class="btn btn-secondary">
+            Volver
+        </a>
+
+    </div>
+    
+
+    <form method="POST" action="/agregar_carrito">
+
+        <div class="mb-3">
+            <label>Producto</label>
+
+            <select name="producto_id" class="form-control" required>
+
+                {% for producto in productos %}
+
+                <option value="{{ producto[0] }}">
+                    {{ producto[1] }} - Stock: {{ producto[4] }}
+                </option>
+
+                {% endfor %}
+
+            </select>
+
+        </div>
+
+        <div class="mb-3">
+            <label>Cantidad</label>
+
+            <input
+                type="number"
+                name="cantidad"
+                min="1"
+                class="form-control"
+                required>
+        </div>
+
+        <button type="submit" class="btn btn-success">
+            Agregar al Carrito
+        </button>
+
+    </form>
+    <h3 class="mt-4">Carrito</h3>
+
+    <table class="table table-bordered">
+
+        <thead>
+            <tr>
+                <th>Producto</th>
+                <th>Cantidad</th>
+                <th>Precio</th>
+                <th>Subtotal</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            {% for item in carrito %}
+
+            <tr>
+                <td>{{ item.nombre }}</td>
+                <td>{{ item.cantidad }}</td>
+                <td>S/. {{ item.precio }}</td>
+                <td>S/. {{ item.subtotal }}</td>
+                <td>
+                    <a href="/eliminar_carrito/{{ loop.index0 }}"
+                        class="btn btn-danger btn-sm">
+                        Eliminar
+                    </a>
+                </td>
+                
+            </tr>
+            
+
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+    <div class="mt-3">
+
+        <h4>
+            Total: S/. {{ "%.2f"|format(total_carrito) }}
+        </h4>
+
+    </div>
+    <form action="/confirmar_venta" method="POST">
+
+        <button
+            type="submit"
+            class="btn btn-success">
+            Registrar Venta
+        </button>
+        <a href="/vaciar_carrito"
+            class="btn btn-danger ms-2"
+            onclick="return confirm('¿Vaciar todo el carrito?')">
+            Vaciar Carrito
+        </a>
+
+    </form>
+
+</div>
+
+</body>
+</html>

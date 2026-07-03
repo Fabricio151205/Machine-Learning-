@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Categorías</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+</head>
+<body>
+
+<div class="container mt-5">
+
+    <h2 class="mb-4">Categorías</h2>
+
+    <div class="mb-3">
+        <a href="/" class="btn btn-secondary">
+            Volver
+        </a>
+        <a href="/agregar_categoria" class="btn btn-success">
+            Nueva Categoría
+        </a>
+    </div>
+    
+
+    <table class="table table-bordered table-striped">
+
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            {% for categoria in categorias %}
+            <tr>
+                <td>{{ categoria[0] }}</td>
+                <td>{{ categoria[1] }}</td>
+                <td>{{ categoria[2] }}</td>
+
+                <td>
+
+                    <a href="/editar_categoria/{{ categoria[0] }}"
+                    class="btn btn-warning btn-sm">
+                    Editar
+                    </a>
+
+                    <a href="/eliminar_categoria/{{ categoria[0] }}"
+                    class="btn btn-danger btn-sm"
+                    onclick="return confirm('¿Seguro que deseas eliminar esta categoría?')">
+                    Eliminar
+                    </a>
+
+                </td>
+
+            </tr>
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+
+</div>
+
+</body>
+</html>
